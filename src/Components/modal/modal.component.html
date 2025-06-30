@@ -1,0 +1,23 @@
+<div class="modal-overlay" (click)="closeModal()">
+  <div class="modal-container" (click)="$event.stopPropagation()">
+    <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
+      <label for="habito">Hábito:</label>
+      <input type="text" id="habito" formControlName="nome" />
+
+      <p>Quais dias você pratica esse hábito?</p>
+
+      <div formGroupName="status">
+        <div *ngFor="let option of dias">
+          <label>
+            <input type="checkbox" [formControlName]="option.id" />
+            {{ option.dia }}
+          </label>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="!form.valid">Enviar</button>
+      <div class="mensagem" *ngIf="mensagemSucesso">{{ mensagemSucesso }}</div>
+
+    </form>
+  </div>
+</div>

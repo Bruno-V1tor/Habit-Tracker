@@ -1,0 +1,42 @@
+table {
+  border-collapse: collapse;
+  height: 100%;
+  width: 100%;
+
+  thead {
+    th {
+      padding: 1.5rem 0rem 1rem 0;
+      text-align: left;
+      font-size: 1rem;
+    }
+  }
+
+  tbody {
+    tr {
+      th {
+        padding: 0rem 0rem 0.7rem 0rem;
+        font-size: 1rem;
+        text-align: left;
+      }
+
+      td {
+        padding: 0.5rem 0rem 0rem 0rem;
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  .statusDiv {
+    border-radius: 50%;
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+
+  .bg-verde {
+    background-color: #10b981;
+  }
+
+  .bg-vermelho {
+    background-color: #ef4444;
+  }
+}

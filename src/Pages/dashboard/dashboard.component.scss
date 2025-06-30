@@ -1,0 +1,70 @@
+@import "../../styles.scss";
+
+.dash-group {
+  display: flex;
+  height: 100%;
+}
+
+.info-group {
+  width: 70%;
+  height: 100%;
+}
+
+.check-group {
+  width: 30%;
+}
+
+header {
+  text-align: end;
+
+  h1 {
+    text-align: center;
+    font-size: 2.4rem;
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  button {
+    margin-top: 2rem;
+    @include botao-estilo(#3498db, #fff, 15rem);
+  }
+}
+
+main {
+  margin: 2rem auto 0 auto;
+
+  article {
+    margin-bottom: 2rem;
+
+    span {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .progress-bar {
+      margin-top: 0.6rem;
+      background-color: #2e2e32;
+      border-radius: 0.4rem;
+      height: 0.7rem;
+      width: 100%;
+
+      .progress {
+        background-color: #4caf50;
+        border-radius: 0.4rem;
+        height: 100%;
+        width: 40%;
+      }
+    }
+
+    p {
+      margin-top: 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
+  }
+}

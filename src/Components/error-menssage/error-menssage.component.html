@@ -1,0 +1,9 @@
+<div class="errorDiv" *ngIf="control && submited">
+  @if (control.errors?.["required"]) {
+  <span>Este campo é obrigatório</span>
+  } @if (control.errors?.["email"]) {
+  <span>Email não válido</span>
+  } @if (control.errors?.["minLength"]) {
+  <span>Senha muito curta</span>
+  }
+</div>

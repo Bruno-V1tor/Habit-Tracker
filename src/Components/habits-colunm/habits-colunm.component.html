@@ -1,0 +1,7 @@
+<div *ngFor="let habito of habitos" class="colunm-tasks">
+  <div class="task">
+    <span>{{ habito.nome }}</span>
+    <button (click)="excluirHabito(habito)">Excluir</button>
+    <button>Feito</button>
+  </div>
+</div>

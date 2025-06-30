@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import "./styles/botao";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 62.5%;
+
+  font-family: "Roboto", sans-serif;
+  background-color: #1c1c1e;
+  color: #e4e4e7;
+
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,28 @@
+@mixin botao-estilo($bg-color: #3b82f6, $text-color: #fff, $width) {
+  background-color: $bg-color;
+  border: none;
+  border-radius: 0.2rem;
+  color: $text-color;
+  cursor: pointer;
+  font-size: 1rem;
+  height: 2.5rem;
+  // width: 15rem;
+  width: $width;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: darken($bg-color, 10%);
+  }
+}
+
+button:disabled {
+  background-color: #2e2e32; /* cinza mais claro que o fundo */
+  color: #a0a0a5; /* texto cinza claro */
+  border: none;
+  cursor: not-allowed;
+  opacity: 0.6; /* reduz visibilidade */
+  pointer-events: none; /* evita interação */
+  transition: opacity 0.2s ease;
+  // padding: 0.75rem 1.25rem;
+  // border-radius: 8px;
+}

@@ -1,0 +1,24 @@
+@import "../../styles.scss";
+
+.colunm-tasks{
+    // // background-color: antiquewhite;
+    // display: flex;
+    // justify-content: space-between;
+    margin-bottom: 1rem;
+
+    
+    .task {
+        // background-color: #c9c9c9;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 .5rem 0 1rem
+    }
+
+    span {
+        font-size: 1.3rem;
+        color: black;
+        
+    }
+    
+    
+}

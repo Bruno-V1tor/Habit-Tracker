@@ -1,0 +1,15 @@
+@import "../../styles.scss";
+
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+
+  background-color: #6d28d9;
+  border-radius: 1rem;
+}
+
+img {
+  height: 30rem;
+}

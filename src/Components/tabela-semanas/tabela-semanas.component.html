@@ -1,0 +1,23 @@
+<table>
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th scope="col" *ngFor="let dia of diasSemana">{{ dia }}</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let habito of habitos">
+      <th scope="row">{{ habito.nome }}</th>
+      <td *ngFor="let estado of habito.status; index as i">
+        <div
+          class="statusDiv"
+          [ngClass]="{
+            'bg-verde': habito.status[i],
+            'bg-vermelho': !habito.status[i]
+          }"
+        ></div>
+      </td>
+    </tr>
+  </tbody>
+</table>

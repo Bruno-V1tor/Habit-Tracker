@@ -1,0 +1,69 @@
+<form [formGroup]="profileForm" (ngSubmit)="onFormSubmit()">
+  <h1>Bem-vindo ao Habit Tracker</h1>
+  <h2>Por favor, registre-se para continuar</h2>
+
+  <label for="username">Nome de usuário:</label>
+  <input
+    id="username"
+    type="text"
+    formControlName="username"
+    placeholder="Digite seu nome de usuário"
+  />
+  <div class="alert" *ngIf="profileForm.controls.username?.invalid && profileForm.controls.username?.touched">
+    Nome de usuário é obrigatório
+  </div>
+
+  <label for="email">Email:</label>
+  <input
+    id="email"
+    type="email"
+    formControlName="email"
+    placeholder="example@email.com"
+  />
+  <div
+    class="alert"
+    *ngIf="profileForm.controls.email?.invalid && profileForm.controls.email?.touched"
+  >
+    Email é obrigatório e deve ser válido
+  </div>
+
+  <label for="senha">Senha:</label>
+  <input
+    id="senha"
+    type="password"
+    formControlName="senha"
+    placeholder="Digite sua senha"
+  />
+  <div
+    class="alert"
+    *ngIf="profileForm.controls.senha?.invalid && profileForm.controls.senha?.touched"
+  >
+    <div *ngIf="profileForm.controls.senha?.errors?.['required']">
+      Senha é obrigatória
+    </div>
+    <div *ngIf="profileForm.controls.senha?.errors?.['minlength']">
+      A senha deve ter no mínimo 8 caracteres
+    </div>
+  </div>
+
+  <label for="reSenha">Confirmar senha:</label>
+  <input
+    id="reSenha"
+    type="password"
+    formControlName="reSenha"
+    placeholder="Digite a senha novamente"
+  />
+  <div
+    class="alert"
+    *ngIf="profileForm.controls.reSenha?.invalid && profileForm.controls.reSenha?.touched"
+  >
+    Confirmação de senha é obrigatória
+  </div>
+
+  <p *ngIf="errorMsg" class="alert">{{ errorMsg }}</p>
+  <p *ngIf="successMsg" class="success">{{ successMsg }}</p>
+
+  <p><a (click)="trocarTela.emit()">Voltar para login</a></p>
+
+  <button type="submit" [disabled]="!profileForm.valid">Cadastrar</button>
+</form>

@@ -1,0 +1,46 @@
+<form [formGroup]="profileForm" (ngSubmit)="onFormSubmit()">
+  <h1>Bem-vindo de volta</h1>
+  <h2>Faça o login para entrar no site</h2>
+
+  <div *ngIf="errorMsg" class="alert">
+    {{ errorMsg }}
+  </div>
+
+  <label for="usuario">Usuário: </label>
+  <input
+    type="text"
+    id="usuario"
+    formControlName="usuario"
+    placeholder="Digite seu nome de usuário"
+  />
+
+  <div
+    class="alert"
+    *ngIf="profileForm.controls.usuario?.errors && (profileForm.controls.usuario?.dirty || profileForm.controls.usuario?.touched)">
+    Usuário é obrigatório
+  </div>
+
+  <label for="senha">Senha: </label>
+  <input
+    type="password"
+    id="senha"
+    formControlName="senha"
+    placeholder="Digite aqui a sua senha"
+  />
+
+  <div *ngIf="profileForm.controls.senha?.errors && (profileForm.controls.senha?.dirty || profileForm.controls.senha?.touched)">
+    <div class="alert" *ngIf="profileForm.controls.senha?.errors?.['required']">
+      Senha é obrigatória
+    </div>
+    <div class="alert" *ngIf="profileForm.controls.senha?.errors?.['minlength']">
+      A senha deve ter no mínimo 8 caracteres
+    </div>
+  </div>
+
+  <p>
+    Ainda não tem conta?
+    <a (click)="trocarTela.emit()">Cadastre-se</a>
+  </p>
+
+  <button type="submit" [disabled]="!profileForm.valid">Entrar</button>
+</form>

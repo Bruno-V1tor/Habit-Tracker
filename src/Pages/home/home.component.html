@@ -1,0 +1,18 @@
+<div class="login-page">
+  <section>
+    <img
+      src="../../assets/group-people-illustration-pack.png"
+      alt="Grupo de pessoas"
+    />
+  </section>
+
+  <div class="forms">
+    <ng-container *ngIf="telaAtual() === 'login'">
+      <app-login (trocarTela)="telaAtual.set('cadastro')" />
+    </ng-container>
+
+    <ng-container *ngIf="telaAtual() === 'cadastro'">
+      <app-cadastro (trocarTela)="telaAtual.set('login')" />
+    </ng-container>
+  </div>
+</div>
