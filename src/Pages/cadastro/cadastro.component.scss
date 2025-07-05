@@ -7,7 +7,7 @@ form {
 
   display: flex;
   flex-direction: column;
-  padding: 2rem 3rem 3rem 3rem;
+  padding: 1rem 3rem 1rem 3rem;
   border-radius: 0.5rem;
 }
 
@@ -22,7 +22,7 @@ h2 {
 }
 
 label {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   font-size: 0.8rem;
   font-weight: 500;
 }
@@ -36,14 +36,21 @@ input {
 }
 
 p {
-  margin-top: 0.7rem;
+  margin-top: 0.3rem;
 
   a {
     color: #fff;
+    cursor: pointer;
   }
 }
 
 button {
-  margin-top: 2rem;
+  margin-top: 1rem;
   @include botao-estilo(#3498db, #fff, 100%);
+}
+
+.alert {
+  color: #ef4444;
+  font-weight: 600;
+  margin-top: 0.5rem;
 }

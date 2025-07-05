@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { IDays, arrayDays } from '../../mocks/days';
 import { HabitActionsService } from '../../services/habit-actions.service';
+import { AuthService } from '../../app/services/auth.service'; // 👈 importar o AuthService
 import { IHabits } from '../../mocks/dumbHabits';
 
 @Component({
@@ -23,44 +24,73 @@ export class ModalComponent {
 
   form = new FormGroup({
     nome: new FormControl('', [Validators.required]),
-
-    status: new FormGroup(
-      Object.fromEntries(
-        this.dias.map((day) => [day.id, new FormControl(false, { nonNullable: true })])
-      )
-    ),
+    dias_semana: new FormControl<string[]>([], [Validators.required])
   });
 
-  constructor(public habitActionsService: HabitActionsService) {}
+  mensagemSucesso = '';
+  mensagemErro = '';
+
+  // 👇 injetar AuthService também
+  constructor(
+    public habitActionsService: HabitActionsService,
+    private authService: AuthService
+  ) {}
 
   closeModal(): void {
     this.close.emit();
   }
 
-  mensagemSucesso = '';
+  onDiaSelecionado(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const dia = input.value;
+    let dias = this.form.get('dias_semana')?.value || [];
 
-onFormSubmit() {
-  const formValue = this.form.value;
-  if (formValue.nome && typeof formValue.nome === 'string') {
-    const jaExiste = this.habitActionsService.getHabitos()
-     .some((hab: IHabits) => hab.nome.toLowerCase() === formValue.nome!.toLowerCase())
+    if (input.checked) {
+      dias = [...dias, dia];
+    } else {
+      dias = dias.filter((d: string) => d !== dia);
+    }
 
+    this.form.get('dias_semana')?.setValue(dias);
+  }
 
-    if (jaExiste) {
-      this.mensagemSucesso = 'Já existe um hábito com esse nome.';
+  onFormSubmit() {
+    const formValue = this.form.value;
+
+    if (!formValue.nome) {
+      this.mensagemErro = 'Nome é obrigatório';
       return;
     }
 
-    this.habitActionsService.add({
+    const userId = this.authService.getUserIdFromToken(); // 👈 pega o ID do usuário
+
+    if (!userId) {
+      this.mensagemErro = 'Você precisa estar logado para criar hábitos.';
+      return;
+    }
+
+    const diasSelecionados = formValue.dias_semana || [];
+
+    const payload = {
+      usuario: userId,
       nome: formValue.nome,
-      status: this.dias.map(
-        (day) => (formValue.status as { [x: string]: boolean })[day.id]
-      ),
+      descricao: '',
+      frequencia: 'D',
+      hora_sugerida: '08:00:00',
+      dias_semana: diasSelecionados,
+    };
+
+    this.habitActionsService.createHabit(payload).subscribe({
+      next: () => {
+        this.mensagemSucesso = 'Hábito criado com sucesso!';
+        this.form.reset({ dias_semana: [] });
+        this.mensagemErro = '';
+        this.habitActionsService.fetchHabits();
+      },
+      error: (err: any) => {
+        console.error('Erro completo ao criar hábito:', err);
+        this.mensagemErro = 'Erro ao criar hábito. Verifique se está logado.';    
+      } 
     });
-
-    this.mensagemSucesso = 'Hábito adicionado com sucesso!';
-    this.form.reset(); // limpa o form após envio
   }
-}
-
 }

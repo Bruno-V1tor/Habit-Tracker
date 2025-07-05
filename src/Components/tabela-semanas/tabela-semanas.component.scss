@@ -22,6 +22,7 @@ table {
       td {
         padding: 0.5rem 0rem 0rem 0rem;
         font-size: 0.8rem;
+        text-align: center;
       }
     }
   }
@@ -30,13 +31,18 @@ table {
     border-radius: 50%;
     width: 1.7rem;
     height: 1.7rem;
+    margin: 0 auto;
   }
 
-  .bg-verde {
+  .bg-verde .statusDiv {
     background-color: #10b981;
   }
 
-  .bg-vermelho {
+  .bg-vermelho .statusDiv {
     background-color: #ef4444;
+  }
+
+  .bg-cinza .statusDiv {
+    background-color: #d1d5db;
   }
 }

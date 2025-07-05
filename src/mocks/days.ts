@@ -1,5 +1,5 @@
 export interface IDays {
-  dia: String;
+  dia: string;
   id: number;
 }
 

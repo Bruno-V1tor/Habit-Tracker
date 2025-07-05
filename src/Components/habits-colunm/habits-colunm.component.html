@@ -1,7 +1,23 @@
 <div *ngFor="let habito of habitos" class="colunm-tasks">
   <div class="task">
-    <span>{{ habito.nome }}</span>
-    <button (click)="excluirHabito(habito)">Excluir</button>
-    <button>Feito</button>
+    <div>
+      <span>{{ habito.nome }}</span>
+      <div class="dias">
+        <span
+          *ngFor="let dia of ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo']"
+          [ngClass]="{
+            'nao-selecionado': !habito.dias_semana?.includes(dia),
+            'selecionado': habito.dias_semana?.includes(dia)
+          }"
+        >
+          {{ dia.substring(0, 3) }}
+        </span>
+      </div>
+    </div>
+
+    <div class="botoes">
+      <button (click)="excluirHabito(habito)">Excluir</button>
+      <button (click)="marcarFeito(habito)">Feito</button>
+    </div>
   </div>
 </div>

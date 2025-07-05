@@ -1,18 +1,15 @@
-export interface IHabits {
-  nome: string;
-  status: boolean[];
-  // status: boolean[]|[]
+export interface IRegistroHabito {
+  id: number;
+  habito: number;
+  dia: string;
 }
 
-export const habitos: IHabits[] = [
-  { nome: 'Ler', status: [true, false, true, false, true, false, true] },
-  { nome: 'Correr', status: [false, true, false, true, false, true, false] },
-  {
-    nome: 'Ginástica',
-    status: [true, true, false, false, true, true, false],
-  },
-  {
-    nome: 'Meta de água',
-    status: [false, false, true, true, false, false, true],
-  },
-];
+export interface IHabits {
+  id: number;
+  nome: string;
+  descricao?: string;
+  frequencia?: string;
+  hora_sugerida?: string;
+  dias_semana?: string[];
+  registros?: IRegistroHabito[];
+}

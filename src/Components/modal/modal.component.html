@@ -6,18 +6,24 @@
 
       <p>Quais dias você pratica esse hábito?</p>
 
-      <div formGroupName="status">
+      <div>
         <div *ngFor="let option of dias">
           <label>
-            <input type="checkbox" [formControlName]="option.id" />
+           <input
+            type="checkbox"
+            [checked]="form.value.dias_semana?.includes(option.dia.toString())"
+            (change)="onDiaSelecionado($event)"
+            [value]="option.dia"
+           />
             {{ option.dia }}
           </label>
         </div>
       </div>
 
       <button type="submit" [disabled]="!form.valid">Enviar</button>
-      <div class="mensagem" *ngIf="mensagemSucesso">{{ mensagemSucesso }}</div>
 
+      <div class="mensagem sucesso" *ngIf="mensagemSucesso">{{ mensagemSucesso }}</div>
+      <div class="mensagem erro" *ngIf="mensagemErro">{{ mensagemErro }}</div>
     </form>
   </div>
 </div>
