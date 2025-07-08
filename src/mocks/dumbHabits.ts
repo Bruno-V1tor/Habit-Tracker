@@ -2,6 +2,7 @@ export interface IRegistroHabito {
   id: number;
   habito: number;
   dia: string;
+ 
 }
 
 export interface IHabits {
@@ -12,4 +13,5 @@ export interface IHabits {
   hora_sugerida?: string;
   dias_semana?: string[];
   registros?: IRegistroHabito[];
+  done_dates?: string[];
 }

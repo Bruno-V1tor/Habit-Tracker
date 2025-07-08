@@ -75,5 +75,10 @@ marcarComoFeito(habitoId: number, dia: string): Observable<any> {
   return this.http.post(url, { dia }, { headers });
 }
 
+getHabitsDoneThisWeek(): Observable<any[]> {
+  return this.http.get<any[]>('http://localhost:8000/api/registros/');
+}
+
+
 
 }

@@ -2,16 +2,14 @@
   <div class="task">
     <div>
       <span>{{ habito.nome }}</span>
-      <div class="dias">
+
+      <div class="bolinhas">
         <span
-          *ngFor="let dia of ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo']"
-          [ngClass]="{
-            'nao-selecionado': !habito.dias_semana?.includes(dia),
-            'selecionado': habito.dias_semana?.includes(dia)
-          }"
-        >
-          {{ dia.substring(0, 3) }}
-        </span>
+          *ngFor="let i of [1, 2, 3, 4, 5, 6, 0]"
+          class="bolinha"
+          [ngClass]="getCorDoDia(habito, i)"
+          [title]="getDiaSemanaNome(i)"
+        ></span>
       </div>
     </div>
 

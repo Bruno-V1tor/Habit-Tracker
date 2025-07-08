@@ -13,38 +13,21 @@
       display: flex;
       gap: 0.5rem;
     }
+    
+    .verde {
+      background-color: #4caf50;
+    }
 
-    .dias {
-      display: flex;
-      gap: 0.25rem;
-      margin-top: 0.5rem;
+    .vermelho {
+      background-color: #f44336;
+    }
 
-      span {
-        padding: 0.25rem 0.5rem;
-        border-radius: 5px;
-        font-size: 0.9rem;
-      }
-
-      .selecionado {
-        background-color: #4caf50;
-        color: white;
-      }
-
-      .nao-selecionado {
-        background-color: #f44336;
-        color: white;
-      }
-
-      .feito {
-        background-color: #2196f3;
-        color: white;
-      }
+    .branco {
+      background-color: #ffffff;
     }
   }
 
   span {
     font-size: 1.2rem;
   }
-
-  
 }

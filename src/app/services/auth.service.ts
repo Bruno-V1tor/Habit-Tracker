@@ -39,6 +39,10 @@ export class AuthService {
       })
     );
   }
+  // auth.service.ts
+  getUserInfo() {
+    return this.http.get('http://localhost:8000/auth/users/me/'); 
+  }
 
   /** Cadastra um novo usuário */
   register(data: RegisterPayload): Observable<any> {
@@ -54,7 +58,7 @@ export class AuthService {
   /** Retorna o token atual de acesso */
   getToken(): string | null {
     if (typeof window !== 'undefined') {
-    return localStorage.getItem('token');
+      return localStorage.getItem('access');
     }
     return null;
   }
