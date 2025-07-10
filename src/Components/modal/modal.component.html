@@ -1,29 +1,22 @@
 <div class="modal-overlay" (click)="closeModal()">
-  <div class="modal-container" (click)="$event.stopPropagation()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>Adicionar Hábito</h2>
+
     <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
-      <label for="habito">Hábito:</label>
-      <input type="text" id="habito" formControlName="nome" />
+      <input type="text" formControlName="nome" placeholder="Nome do hábito" />
 
-      <p>Quais dias você pratica esse hábito?</p>
-
-      <div>
-        <div *ngFor="let option of dias">
-          <label>
-           <input
-            type="checkbox"
-            [checked]="form.value.dias_semana?.includes(option.dia.toString())"
-            (change)="onDiaSelecionado($event)"
-            [value]="option.dia"
-           />
-            {{ option.dia }}
-          </label>
-        </div>
+      <div class="dias">
+        <label *ngFor="let dia of dias">
+          <input type="checkbox" [value]="dia.dia" (change)="onDiaSelecionado($event)" />
+          {{ dia.dia }}
+        </label>
       </div>
 
-      <button type="submit" [disabled]="!form.valid">Enviar</button>
-
-      <div class="mensagem sucesso" *ngIf="mensagemSucesso">{{ mensagemSucesso }}</div>
-      <div class="mensagem erro" *ngIf="mensagemErro">{{ mensagemErro }}</div>
+      <button type="submit">Salvar</button>
+      <button type="button" class="fechar" (click)="closeModal()">Cancelar</button>
     </form>
+
+    <p class="mensagem sucesso" *ngIf="mensagemSucesso">{{ mensagemSucesso }}</p>
+    <p class="mensagem erro" *ngIf="mensagemErro">{{ mensagemErro }}</p>
   </div>
 </div>

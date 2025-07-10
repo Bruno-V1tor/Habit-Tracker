@@ -1,24 +1,31 @@
-<table>
-  <thead>
-    <tr>
-      <th>&nbsp;</th>
-      <th scope="col" *ngFor="let dia of diasSemana">{{ dia }}</th>
-    </tr>
-  </thead>
+<div *ngIf="mensagemSucesso" class="toast-sucesso">
+  {{ mensagemSucesso }}
+</div>
 
-  <tbody>
-    <tr *ngFor="let habito of habitos">
-      <th scope="row">{{ habito.nome }}</th>
-      <td
-        *ngFor="let dia of diasSemana"
-        [ngClass]="{
-          'bg-cinza': !habito.dias_semana?.includes(dia),
-          'bg-verde': habito.dias_semana?.includes(dia) && habitoFoiFeitoNoDia(habito, dia),
-          'bg-vermelho': habito.dias_semana?.includes(dia) && !habitoFoiFeitoNoDia(habito, dia)
-        }"
-      >
-        <div class="statusDiv"></div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<section class="tabela-habitos">
+  <div class="linha-cabecalho">
+    <div class="nome-habito"> </div>
+    <div *ngFor="let dia of diasSemana" class="dia">{{ dia }}</div>
+    
+  </div>
+
+  <div class="linha-habito" *ngFor="let habito of habitos">
+    <div class="nome-habito">{{ habito.nome }}</div>
+
+    <div *ngFor="let dia of diasSemana" class="bolinha"
+         [ngClass]="{
+           'bg-cinza': !habito.dias_semana.includes(dia),
+           'bg-verde': habito.dias_semana.includes(dia) && habitoFoiFeitoNoDia(habito, dia),
+           'bg-vermelho': habito.dias_semana.includes(dia) && !habitoFoiFeitoNoDia(habito, dia)
+         }"
+         [title]="dia">
+    </div>
+    <div class="acoes">
+    <button class="botao-feito" (click)="marcarFeito(habito)">✅ Feito</button>
+    <button class="botao-excluir" (click)="excluirHabito(habito)">🗑️ Excluir</button>
+  </div>
+
+
+
+  </div>
+</section>

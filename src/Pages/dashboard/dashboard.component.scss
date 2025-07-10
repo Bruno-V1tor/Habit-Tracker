@@ -1,7 +1,13 @@
 @import "../../styles.scss";
 
+
 .dash-group {
   display: flex;
+  flex-direction: column;
+  position: relative; // para posicionar o botão "Sair" dentro dele
+  background-color: #1a1a1a;
+  border-radius: 20px;
+  padding: 2rem;
   height: 100%;
 }
 
@@ -11,8 +17,27 @@
 }
 
 .check-group {
-  width: 30%;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  .logout-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 24px; // mais largo
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #d32f2f;
+    }
+  }
 }
+
 
 header {
   text-align: end;
@@ -51,7 +76,7 @@ main {
       background-color: #2e2e32;
       border-radius: 0.4rem;
       height: 0.7rem;
-      width: 100%;
+      width: 120%;
 
       .progress {
         background-color: #4caf50;
@@ -66,5 +91,6 @@ main {
       font-size: 0.7rem;
       font-weight: 500;
     }
+    
   }
 }

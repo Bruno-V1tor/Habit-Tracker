@@ -1,13 +1,10 @@
 <div class="dash-group">
   <div class="info-group">
     <header>
-    <h1>Olá, {{ nomeUsuario }} 😊</h1>
-    <h2>Monitore suas atividades e obtenha uma avaliação do seu desempenho!</h2>
-
-    <button (click)="openModal()">Adicionar hábito</button>
-    <button (click)="logout()" class="logout-btn">Sair</button> <!-- 👈 novo botão -->
-  </header>
-
+      <h1>Olá, {{ nomeUsuario }} 😊</h1>
+      <h2>Monitore suas atividades e obtenha uma avaliação do seu desempenho!</h2>
+      <button (click)="openModal()">Adicionar hábito</button>
+    </header>
 
     <app-modal *ngIf="isModalVisible" (close)="hideModal()"></app-modal>
 
@@ -20,12 +17,16 @@
         </div>
         <p>{{ progressPercent }}% meta atingida</p>
       </article>
+      <app-tabela-semanas
+        *ngIf="mostrarTabela"
+        [habitsDoneThisWeek]="habitsDoneThisWeek"
+        (atualizarHabitosFeitos)="atualizarHabitosFeitos()">
+      </app-tabela-semanas>
 
-      <app-tabela-semanas />
     </main>
   </div>
 
   <div class="check-group">
-    <app-habits-colunm (habitoMarcado)="atualizarProgresso()" />
+    <button (click)="logout()" class="logout-btn">Sair</button>
   </div>
 </div>

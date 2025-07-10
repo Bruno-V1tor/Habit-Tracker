@@ -1,48 +1,151 @@
-table {
-  border-collapse: collapse;
-  height: 100%;
+.tabela-habitos {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
   width: 100%;
+  max-width: 1100px;
+  color: white;
 
-  thead {
-    th {
-      padding: 1.5rem 0rem 1rem 0;
-      text-align: left;
-      font-size: 1rem;
-    }
+  .linha-cabecalho,
+  .linha-habito {
+    display: flex;
+    align-items: center;
   }
 
-  tbody {
-    tr {
-      th {
-        padding: 0rem 0rem 0.7rem 0rem;
-        font-size: 1rem;
-        text-align: left;
-      }
-
-      td {
-        padding: 0.5rem 0rem 0rem 0rem;
-        font-size: 0.8rem;
-        text-align: center;
-      }
-    }
+  .nome-habito {
+    width: 160px; /* maior largura */
+    font-weight: bold;
+    font-size: 1.2rem; /* texto maior */
   }
 
-  .statusDiv {
+  .bolinha {
+    width: 33px;  /* bolinha maior */
+    height: 33px;
     border-radius: 50%;
-    width: 1.7rem;
-    height: 1.7rem;
-    margin: 0 auto;
+    margin: 0 6px;
+    border: 1px solid #fff;
+  }
+  
+  .dia {
+    width: 45px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.0rem;
   }
 
-  .bg-verde .statusDiv {
-    background-color: #10b981;
+  
+
+  .bg-cinza {
+    background-color: #ccc;
   }
 
-  .bg-vermelho .statusDiv {
-    background-color: #ef4444;
+  .bg-vermelho {
+    background-color: #f44336;
   }
 
-  .bg-cinza .statusDiv {
-    background-color: #d1d5db;
+  .bg-verde {
+    background-color: #4caf50;
   }
+
+  .acoes {
+    margin-left: 16px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    button {
+      padding: 4px 8px;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .botao-menu {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .menu-acoes {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #222;
+      border: 1px solid #444;
+      padding: 0.5rem;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      z-index: 1000;
+
+      button {
+        background-color: transparent;
+        border: none;
+        color: white;
+        padding: 0.25rem 0.5rem;
+        cursor: pointer;
+        text-align: left;
+
+        &:hover {
+          background-color: #333;
+        }
+      }
+    }
+  }
+
+  .toast-sucesso {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background-color: #4caf50;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    animation: fadeInOut 3s ease forwards;
+    font-weight: bold;
+  }
+
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    10% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+  .botao-feito,
+  .botao-excluir {
+    background-color: rgba(0, 0, 0, 0.2);  // fundo escuro translúcido
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0.3em 0.6em;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  .botao-feito:hover,
+  .botao-excluir:hover {
+    background-color: rgba(255, 255, 255, 0.1);  // efeito visual no hover
+  }
+
 }
+
+
